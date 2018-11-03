@@ -1,19 +1,25 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-success">
   <div class="container container-fluid">
-    <a href="#" class="navbar-brand">PetMatch</a>
+    <%= link_to "PetMatch", root_path, class: "navbar-brand" %>
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#">Option1</a>
+          <a class="nav-link" href="#">Explorar</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Option1</a>
+          <a class="nav-link" href="#">Favoritos</a>
         </li>
       </ul>
     </div>
     <div class="navbar-text pull-right">
-      <a href="#" class="navbar-link">Sign In</a> |
-      <a href="#" class="navbar-link">Sig Out</a>
+      <% if !user_signed_in? %>
+        <%= link_to "Sign In", new_user_session_path, class: "navbar-link" %> |
+        <%= link_to "Sign Up", new_user_registration_path, class: "navbar-link" %>
+      <% else %>
+        <!--TODO: CHANGE PATH USER EMAIL TO PROFILE VIEW AND SHOW NAME-->
+        <%= link_to current_user.email, root_path, class: "navbar-link" %> |
+        <%= link_to "Sign Out", destroy_user_session_path, class: "navbar-link", method: :delete %>
+      <% end %>
     </div>
   </div>
 </nav>

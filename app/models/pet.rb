@@ -3,4 +3,5 @@ class Pet < ApplicationRecord
   has_many :user_pets
   has_many :user, through: :user_pets
   has_many :documents
+  has_many :images
 end

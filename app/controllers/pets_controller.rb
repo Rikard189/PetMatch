@@ -2,7 +2,9 @@ class PetsController < ApplicationController
   before_action :set_pet, only: %i[show edit update]
   before_action :only_users, only: %i[edit new]
   def index
-    @pets = UserPet.adopting.map(&:pet)
+    pets_ids = UserPet.adopting.each(&:pet).map(&:id)
+    @q = Pet.where(id: pets_ids).ransack(params[:q])
+    @pets = @q.result(distinct: true)
   end
 
   def show; end
@@ -38,7 +40,7 @@ class PetsController < ApplicationController
   end
 
   def only_users
-    redirect_to root_path unless current_user
+    redirect_to root_path unless user_signed_in?
   end
 
   def pet_params

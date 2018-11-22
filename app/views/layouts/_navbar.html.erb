@@ -6,11 +6,13 @@
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#">Explorar</a>
+          <%= link_to "Explorar", pets_path, class: "nav-link" %>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Favoritos</a>
-        </li>
+        <% if user_signed_in? %>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Favoritos</a>
+          </li>
+        <% end %>
       </ul>
     </div>
     <div class="navbar-text pull-right">

@@ -12,3 +12,9 @@
 .explore-txt {
   color: orange;
 }
+
+.pet-description{
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  overflow:hidden;
+}

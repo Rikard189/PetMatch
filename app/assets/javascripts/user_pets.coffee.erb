@@ -1,0 +1,16 @@
+# Place all the behaviors and hooks related to the matching controller here.
+# All this logic will automatically be available in application.js.
+# You can use CoffeeScript in this file: http://coffeescript.org/
+$(document).ready ->
+  $(document).on 'change', '.pets-fav', ->
+    if $(this).on('click')
+      $.ajax(
+        url: "/user_pets/#{data-pet}/add_to_fav"
+        type: 'post'
+      )
+  $(document).on 'change', '.pets-remove', ->
+    if $(this).on('click')
+      $.ajax(
+        url: "/user_pets/#{data-pet}/remove_fav"
+        type: 'delete'
+      )

@@ -1,0 +1,4 @@
+$("#remove_fav_<%= @pet.id %>").hide();
+$("#add_to_fav_<%= @pet.id %>").show();
+confirm("¿Estas seguro de quitar a <%= @pet.name %> de favoritos?");
+alert("El <%= @pet.name %> ha sido removido a tu lista de favoritos");

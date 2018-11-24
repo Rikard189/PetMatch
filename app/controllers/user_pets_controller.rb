@@ -14,4 +14,9 @@ class UserPetsController < ApplicationController
       format.js
     end
   end
+
+  def favorites
+    pets_ids = UserPet.favorite.where(user_id: current_user.id).map(&:pet_id)
+    @pets = Pet.where(id: pets_ids)
+  end
 end

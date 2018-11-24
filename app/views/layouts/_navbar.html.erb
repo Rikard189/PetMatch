@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-success">
   <div class="container container-fluid">
-    <%= link_to root_path, class: "navbar-brand" do %>
+    <%= link_to root_path, class: "navbar-brand font-weight-bold" do %>
       <%= fa_icon "paw" %> PetMatch
     <% end %>
     <div class="collapse navbar-collapse" id="navbarText">
@@ -10,7 +10,7 @@
         </li>
         <% if user_signed_in? %>
           <li class="nav-item">
-            <a class="nav-link" href="#">Favoritos</a>
+            <%= link_to "favorite", favorites_user_pets_path, class:"nav-link" %>
           </li>
         <% end %>
       </ul>

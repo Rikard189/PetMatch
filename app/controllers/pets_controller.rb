@@ -7,7 +7,9 @@ class PetsController < ApplicationController
     @pets = @q.result(distinct: true)
   end
 
-  def show; end
+  def show
+    @userOwner = UserPet.find_by(pet: @pet, status: 2).user
+  end
 
   def edit; end
 

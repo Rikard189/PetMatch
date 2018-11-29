@@ -1,5 +1,6 @@
-<div class="container">
-    <h1 class="text-center"><%=@pet.name%> </h1>
+<br>
+<h1 class="text-center font_size"><%=@pet.name%> </h1>
+<div class="container jumbotron", style="padding-top: 32px; margin-top: 50px;">
     <div class="row">
         <div class="col-sm">
             <div id="carouselIndicators" class="carousel slide" data-ride="carousel" style= "width: 500px; margin: 0 auto">
@@ -31,15 +32,18 @@
         <div class="col-sm">
             <h2>Datos de la mascota</h2>
             <br>
-            <h4>Edad: <span><%= @pet.age %></span> </h4>
-            <h4>Descripción: <span><%= @pet.description %></span> </h4>
-            <h4>Tipo de animal: <span><%= @pet.animal_type %></span></h4>
-            <h4>Raza: <span><%= @pet.breed %></span></h4>
+            <h4>Edad: <span class="pets_span"><%= @pet.age %></span> </h4>
+            <h4>Descripción: <span class="pets_span"><%= @pet.description %></span> </h4>
+            <h4>Tipo de animal: <span class="pets_span"><%= @pet.animal_type %></span></h4>
+            <h4>Raza: <span class="pets_span"><%= @pet.breed %></span></h4>
             <br>
             <h2>Datos del dueño</h2>
             <br>
-            <h4>Nombre: Miguelito Rocha</h4>
-            <h4>Email: <span><%= @userOwner.email %></span></h4>
+            <h4>Nombre: <span class="pets_span"><%= @userOwner.firstname %> <%= @userOwner.lastname %></span></h4>
+            <h4>Email: <span class="pets_span"><%= @userOwner.email %></span></h4>
+            <h4>Estado: <span class="pets_span"><%= @userOwner.state %></span></h4>
+            <h4>Cuidad: <span class="pets_span"><%= @userOwner.city %></span></h4>
+            <h4>Municipio: <span class="pets_span"><%= @userOwner.municipality %></span></h4>
         </div>
     </div>
 </div>

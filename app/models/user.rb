@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :user_pets
   has_many :pets, through: :user_pets
   has_many :comments
+  mount_uploader :profile_pic, ProfilePicsUploader
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 end

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: {registrations: "users/registrations"}
   resources :pets
   root to: "home#index"
   resources :user_pets, only: [:favorites, :add_to_fav, :remove_fav] do

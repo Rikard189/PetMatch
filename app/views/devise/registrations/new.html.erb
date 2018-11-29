@@ -6,6 +6,30 @@
 		<div class="card-text">
 			<form>
 				<div class="form-group">
+					<%= f.label :firstname, "Primer Nombre" %>
+          <%= f.text_field :firstname, autofocus: true, class: "form-control form-control-sm" %>
+				</div>
+				<div class="form-group">
+					<%= f.label :lastname, "Ultimo Nombre" %>
+          <%= f.text_field :lastname, autofocus: true, class: "form-control form-control-sm" %>
+				</div>
+				<div class="form-group">
+					<%= f.label :state, "Estado" %>
+          <%= f.text_field :state, autofocus: true, class: "form-control form-control-sm" %>
+				</div>
+				<div class="form-group">
+					<%= f.label :city, "Cuidad" %>
+          <%= f.text_field :city, autofocus: true, class: "form-control form-control-sm" %>
+				</div>
+				<div class="form-group">
+					<%= f.label :municipality, "Municipio" %>
+          <%= f.text_field :municipality, autofocus: true, class: "form-control form-control-sm" %>
+				</div>
+				<div class="form-group">
+					<%= f.label :age, "Edad" %>
+          <%= f.text_field :age, autofocus: true, class: "form-control form-control-sm" %>
+				</div>
+				<div class="form-group">
 					<%= f.label :email, "Correo" %>
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control form-control-sm" %>
 				</div>

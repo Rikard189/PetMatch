@@ -46,4 +46,13 @@
             <h4>Municipio: <span class="pets_span"><%= @userOwner.municipality %></span></h4>
         </div>
     </div>
+    <div class="row">
+      <div class="btn-group">
+        <% if UserPet.find_by(pet: @pet, user: current_user, status: 0) %>
+          <button type="button" class="btn btn-primary" disabled>En espera de adopcion</button>
+        <% elsif UserPet.find_by(pet: @pet, status: 2) %>
+          <%= link_to "Adoptar", pending_adopt_user_pet_path(@pet), method: :post, class: "btn btn-success" %>
+        <% end %>
+      </div>
+    </div>
 </div>

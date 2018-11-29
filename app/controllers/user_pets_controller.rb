@@ -20,8 +20,14 @@ class UserPetsController < ApplicationController
     @search = Pet.where(id: pets_ids).ransack(params[:q])
     @pets = @search.result(distinct: true)
     respond_to do |format|
-      format.json { render json: UserPet.all} 
+      format.json { render json: UserPet.all}
       format.html
     end
+  end
+
+  def pending_adopt
+    @pet = Pet.find(params[:id])
+    UserPet.create(user: current_user, pet: @pet, status: 0)
+    redirect_to pets_path
   end
 end

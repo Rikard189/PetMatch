@@ -13,6 +13,7 @@ class PetsController < ApplicationController
 
   def new
     @pet = Pet.new
+    @pet.images.build
   end
 
   def update
@@ -44,6 +45,6 @@ class PetsController < ApplicationController
   end
 
   def pet_params
-    params.require(:pet).permit(:id, :name, :age, :description, :animal_type, :breed)
+    params.require(:pet).permit(:id, :name, :age, :description, :animal_type, :breed, images_attributes: [:image])
   end
 end

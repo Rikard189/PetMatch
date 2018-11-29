@@ -2,8 +2,10 @@ Rails.application.routes.draw do
   devise_for :users
   resources :pets
   root to: "home#index"
-  resources :user_pets, only: [:add_to_fav] do
+  resources :user_pets, only: [:favorites, :add_to_fav, :remove_fav] do
     post "add_to_fav", on: :member
     delete "remove_fav", on: :member
+    get 'favorites', on: :collection
   end
+
 end

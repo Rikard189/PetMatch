@@ -2,7 +2,7 @@ class PetsController < ApplicationController
   before_action :set_pet, only: %i[show edit update]
   before_action :only_users, only: %i[edit new]
   def index
-    pets_ids = UserPet.adopting.map(&:pet_id)
+    pets_ids = UserPet.adopting.where.not(user: current_user).map(&:pet_id)
     @q = Pet.where(id: pets_ids).ransack(params[:q])
     @pets = @q.result(distinct: true)
   end

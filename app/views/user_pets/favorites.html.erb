@@ -2,6 +2,30 @@
 <div class="container">
   <h1 class="text-center font-weight-bold explore-txt">Tus Mascotas Favoritas</h1>
   <br>
+  <div class="card-deck">
+    <div class="card text-center border-success">
+      <div class="card-body">
+        <h3 class="card-title text-info">Numero Total de Gatos Favoritos</h5>
+        <h1 class="card-title text-success"><%= total_cats(@pets) %></h3>
+      </div>
+    </div>
+    <div class="card text-center border-success">
+      <div class="card-body">
+        <h3 class="card-title text-info">Numero Total de Perros Favoritos</h5>
+        <h1 class="card-title text-success"><%= total_dogs(@pets) %></h3>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="search-bar row col-sm-6 mx-auto">
+    <%= search_form_for @search, class: "input-group pets-filter" do |f| %>
+      <%= f.search_field :name_or_breed_cont, class: "form-control", placeholder: "Busqueda por Nombre o Raza" %>
+      <%= button_tag(type: "submit") do %>
+        <%= fa_icon "search" %>
+      <% end %>
+    <% end %>
+  </div>
+  <br>
   <div class="row">
     <% @pets.each do |pet| %>
       <div class="col-md-4">

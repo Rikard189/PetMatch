@@ -5,4 +5,5 @@ class Pet < ApplicationRecord
   has_many :documents
   has_many :images
   has_many :comments
+  accepts_nested_attributes_for :images
 end

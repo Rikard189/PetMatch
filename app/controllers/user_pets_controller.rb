@@ -19,5 +19,9 @@ class UserPetsController < ApplicationController
     pets_ids = UserPet.favorite.where(user: current_user).map(&:pet_id)
     @search = Pet.where(id: pets_ids).ransack(params[:q])
     @pets = @search.result(distinct: true)
+    respond_to do |format|
+      format.json { render json: UserPet.all} 
+      format.html
+    end
   end
 end

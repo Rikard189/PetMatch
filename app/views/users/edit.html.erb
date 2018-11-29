@@ -1,0 +1,7 @@
+<div class="container">
+    <%= form_for @user, url: { action: :update } do |form| %>
+        <%= form.label :profile_pic, "Imagen" %>
+        <%= form.file_field :profile_pic %>
+        <%= form.submit "Actualizar foto de perfil", class: "btn btn-login btn-block" %>
+    <%end%>
+</div>

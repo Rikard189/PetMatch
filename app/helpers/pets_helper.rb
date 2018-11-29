@@ -17,4 +17,9 @@ module PetsHelper
       [name_type.titleize, animal_type]
     end
   end
+
+  def animal_type_spanish(animal_type)
+    animal_type == "cat"? "Gato" : "Perro"
+  end
+
 end

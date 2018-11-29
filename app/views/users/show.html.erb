@@ -1,0 +1,28 @@
+<div class="container jumbotron", style="padding-top: 32px; margin-top: 50px;">
+    <h1 class="text-center font_size"><%= best_in_place @user, :firstname, :as => :input, :place_holder => "¡Haz click aqui para cambiar de primer nombre!", :ok_button => 'Save'%> <%= best_in_place @user, :lastname, :as => :input, :place_holder => "Click me to add content!", :ok_button => 'Save'%></h1>
+    <br>
+    <div class="row">
+        <div class="col-sm">
+            <% if !@user.profile_pic.nil? %>
+                <%= image_tag(@user.profile_pic_url, size: "500x500") %>
+            <% else%>
+                <%= image_tag('profile.png', size: "500x500") %>  
+            <%end%>
+            <%= link_to "Cambiar foto perfil", edit_user_path(@user), class: "btn btn-login btn-block" %>
+        </div>
+        <div class="col-sm">
+            <br>
+            <h4>Email: <span class="pets_span"><%= best_in_place @user, :email, :as => :input, :place_holder => "¡Haz click aqui para cambiar de email!", :ok_button => 'Save'%></span></h4>
+            <br>
+            <h4>Estado: <span class="pets_span"><%= best_in_place @user, :state, :as => :input, :place_holder => "¡Haz click aqui para cambiar de estado!", :ok_button => 'Save'%></span></h4>
+            <br>
+            <h4>Cuidad: <span class="pets_span"><%= best_in_place @user, :city, :as => :input, :place_holder => "¡Haz click aqui para cambiar de cuidad!", :ok_button => 'Save'%></span></h4>
+            <br>
+            <h4>Municipio: <span class="pets_span"><%= best_in_place @user, :municipality, :as => :input, :place_holder => "¡Haz click aqui para cambiar de municipio!", :ok_button => 'Save'%></span></h4>
+            <br>
+            <h4>Edad: <span class="pets_span"><%= best_in_place @user, :age, :as => :input, :place_holder => "¡Haz click aqui para cambiar de edad!", :ok_button => 'Save'%> años</span></h4>
+        </div>
+    </div>    
+</div>
+
+  

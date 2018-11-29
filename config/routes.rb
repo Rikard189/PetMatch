@@ -7,5 +7,5 @@ Rails.application.routes.draw do
     delete "remove_fav", on: :member
     get 'favorites', on: :collection
   end
-
+  get'*path' => redirect('/')
 end

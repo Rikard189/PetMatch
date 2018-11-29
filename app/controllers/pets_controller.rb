@@ -5,6 +5,10 @@ class PetsController < ApplicationController
     pets_ids = UserPet.adopting.where.not(user: current_user).map(&:pet_id)
     @q = Pet.where(id: pets_ids).ransack(params[:q])
     @pets = @q.result(distinct: true)
+    respond_to do |format|
+      format.html
+      format.json { render json: Pet.all }
+    end
   end
 
   def show

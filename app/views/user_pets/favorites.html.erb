@@ -1,0 +1,68 @@
+<br>
+<div class="container">
+  <h1 class="text-center font-weight-bold explore-txt">Tus Mascotas Favoritas</h1>
+  <br>
+  <div class="card-deck">
+    <div class="card text-center border-success">
+      <div class="card-body">
+        <h3 class="card-title text-info">Numero Total de Gatos Favoritos</h5>
+        <h1 class="card-title text-success"><%= total_cats(@pets) %></h3>
+      </div>
+    </div>
+    <div class="card text-center border-success">
+      <div class="card-body">
+        <h3 class="card-title text-info">Numero Total de Perros Favoritos</h5>
+        <h1 class="card-title text-success"><%= total_dogs(@pets) %></h3>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="search-bar row col-sm-6 mx-auto">
+    <%= search_form_for @search, class: "input-group pets-filter" do |f| %>
+      <%= f.search_field :name_or_breed_cont, class: "form-control", placeholder: "Busqueda por Nombre o Raza" %>
+      <%= button_tag(type: "submit") do %>
+        <%= fa_icon "search" %>
+      <% end %>
+    <% end %>
+  </div>
+  <br>
+  <div class="row">
+    <% @pets.each do |pet| %>
+      <div class="col-md-4">
+        <div class="card text-white bg-info mb-3 shadow-sm card-pet-<%= pet.id %>">
+          <%= image_tag pet.images.first.image_url, class: "card-img-top", size: "350x230" %>
+          <div class="card-body">
+            <h5 class="card-title">
+              ¡Hola! Mi nombre es <span class="font-weight-bold"><%= pet.name %></span>
+            </h5>
+            <p class="card-text">
+              Raza: <span class="font-weight-bold"><%= pet.breed %></span>
+            </p>
+            <p class="card-text">
+              Edad: <span class="font-weight-bold"><%= pluralize(pet.age, "año") %></span>
+            </p>
+            <div class="d-flex justify-content-between align-items-center">
+              <%= form_tag add_to_fav_user_pet_path(pet), remote: true, method: :post do |form| %>
+                <div class="btn-group">
+                  <%= link_to "Saber Mas", pet, class: "btn btn-md orange-btn" %>
+                  <%= button_tag(type: "submit", data: {pet: pet.id, user: current_user.id}, id: "add_to_fav_#{pet.id}",
+                    class: "btn btn-md btn-danger pets-fav", style: "#{'display: none;'if check_fav(pet, current_user)}") do %>
+                    <%= fa_icon "heart" %>
+                  <% end %>
+                </div>
+              <% end %>
+              <%= form_tag remove_fav_user_pet_path(pet), remote: true, method: :delete do |form| %>
+                <div class="btn-group">
+                  <%= button_tag(type: "submit", data: {pet: pet.id, user: current_user.id}, id: "remove_fav_#{pet.id}",
+                    class: "btn btn-secondary pets-remove", style: "#{'display: none;'if !check_fav(pet, current_user)}") do %>
+                    Quitar de Favoritos
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
